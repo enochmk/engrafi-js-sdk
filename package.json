@@ -1,6 +1,6 @@
 {
   "name": "@enochmk/engrafi",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "An NPM package to interact with the AT Engrafi API",
   "main": "dist/index.js",
   "scripts": {
