@@ -4,3 +4,4 @@ node_modules
 logs
 build
 dist
+**/test.ts

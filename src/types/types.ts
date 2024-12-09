@@ -4,6 +4,19 @@ export interface EngrafiConfig {
   churnBaseUrl: string;
 }
 
+export interface EngrafiDetailsResponse {
+  message: string;
+  respTime: string;
+  statusCode: string;
+  responseMap: {
+    totalNumberOfRecords: number;
+    pageNumber: number;
+    perPageCount: number;
+    totalPages: number;
+    customerDetails: EngrafiSubscriber[];
+  };
+}
+
 export interface EngrafiSubscriber {
   action: string;
   msisdn: string;
@@ -12,9 +25,9 @@ export interface EngrafiSubscriber {
   lastName: string;
   nationality: string;
   dateOfBirth: string;
-  docType: 'National ID' | 'Passport' | 'Driving License' | 'Voter ID' | 'Unknown';
+  docType: 'NATIONAL ID' | 'PASSPORT' | 'DRIVER LICENSE' | 'VOTER ID' | 'OTHER';
   docNumber: string;
-  gender: 'Male' | 'Female';
+  gender: 'MALE' | 'FEMALE';
   address: string;
   city: string;
   region: string;
@@ -58,19 +71,4 @@ export interface ChurnResponse {
   respTime: string;
   statusCode: string;
   responseMap: any;
-}
-
-export interface EngrafiDetails {
-  message: string;
-  respTime: string;
-  statusCode: string;
-  responseMap: ResponseMap;
-}
-
-export interface ResponseMap {
-  totalNumberOfRecords: number;
-  pageNumber: number;
-  perPageCount: number;
-  totalPages: number;
-  customerDetails: EngrafiSubscriber[];
 }

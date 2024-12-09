@@ -2,10 +2,10 @@
   "name": "@enochmk/engrafi",
   "version": "1.0.0",
   "description": "An NPM package to interact with the AT Engrafi API",
-  "main": "index.js",
+  "main": "dist/index.js",
   "author": "Enoch Klufio",
   "scripts": {
-    "build": "tsc -p"
+    "build": "tsc --pretty"
   },
   "license": "MIT",
   "devDependencies": {
