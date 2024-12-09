@@ -12,6 +12,14 @@ export default class Engrafi {
     });
   }
 
+  private handleError(error: any): never {
+    if (error?.response) {
+      const message = error.response.data?.message ?? 'Something went wrong';
+      throw createHttpError(error.response.status, message);
+    }
+    throw error;
+  }
+
   async register(subscriber: EngrafiSubscriber): Promise<RegisterResponse> {
     subscriber.msisdn = formatPhoneNumber(subscriber.msisdn);
     subscriber.dateOfBirth = formatDateOfBirth(subscriber.dateOfBirth);
@@ -23,11 +31,7 @@ export default class Engrafi {
       }
       return response.data as RegisterResponse;
     } catch (error: any) {
-      if (error?.response) {
-        const message = error.response.data?.message ?? 'Something went wrong';
-        throw createHttpError(error.response.status, message);
-      }
-      throw error;
+      this.handleError(error);
     }
   }
 
@@ -42,13 +46,7 @@ export default class Engrafi {
       }
       return response.data as EngrafiSubscriber;
     } catch (error: any) {
-      if (error.response) {
-        const message =
-          error.response.data.statusCode === 'FL0009' ? 'Number not registered' : 'Something went wrong';
-        const status = error.response.data.statusCode === 'FL0009' ? 404 : error.response.status;
-        throw createHttpError(status, message);
-      }
-      throw error;
+      this.handleError(error);
     }
   }
 
@@ -73,11 +71,7 @@ export default class Engrafi {
       }
       return response.data as ChurnResponse;
     } catch (error: any) {
-      if (error.response) {
-        const message = error.response.data.message ?? 'Something went wrong when churning';
-        throw createHttpError(error.response.status, message);
-      }
-      throw error;
+      this.handleError(error);
     }
   }
 }
