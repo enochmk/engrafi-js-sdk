@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "An NPM package to interact with the AT Engrafi API",
   "main": "dist/index.js",
-  "author": "Enoch Klufio",
   "scripts": {
     "build": "tsc --pretty"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/enochmk/engrafi-js-sdk.git"
+  },
   "license": "MIT",
+  "author": "Enoch Klufio",
   "devDependencies": {
     "@types/http-errors": "^2.0.4",
     "@types/node": "^22.10.1",
